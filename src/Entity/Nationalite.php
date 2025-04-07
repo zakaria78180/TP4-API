@@ -11,7 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=NationaliteRepository::class)
- * @apiResource()
+ * @ApiResource(
+ *              attributes={
+ *               "order"={
+ *              "libelle":"ASC"                 
+ *              }   
+ * })
  */
 class Nationalite
 {
@@ -19,13 +24,11 @@ class Nationalite
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"listAuteurFull"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"listAuteurFull"})
      */
     private $libelle;
 

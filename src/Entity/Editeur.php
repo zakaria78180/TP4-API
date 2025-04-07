@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EditeurRepository::class)
- * @apiResource()
+ * @ApiResource()
  */
 class Editeur
 {
@@ -19,14 +19,12 @@ class Editeur
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"listGenreFull"})
-     * @Groups({"listAuteurFull"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"listGenreFull"})
+
      */
     private $nom;
 
