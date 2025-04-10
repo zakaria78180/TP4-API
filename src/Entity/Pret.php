@@ -2,22 +2,24 @@
 
 namespace App\Entity;
 
-use App\Repository\PretRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PretRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=PretRepository::class)
+  * @ApiResource()
  */
 class Pret
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\GeneratedValue  
      * @ORM\Column(type="integer")
      */
     private $id;
 
-    /**
+    /** 
      * @ORM\Column(type="datetime")
      */
     private $datePret;
@@ -31,18 +33,6 @@ class Pret
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateRetourReelle;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Livre::class, inversedBy="prets")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $livre;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Adherent::class, inversedBy="prets")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $adherent;
 
     public function getId(): ?int
     {
@@ -81,30 +71,6 @@ class Pret
     public function setDateRetourReelle(?\DateTimeInterface $dateRetourReelle): self
     {
         $this->dateRetourReelle = $dateRetourReelle;
-
-        return $this;
-    }
-
-    public function getLivre(): ?Livre
-    {
-        return $this->livre;
-    }
-
-    public function setLivre(?Livre $livre): self
-    {
-        $this->livre = $livre;
-
-        return $this;
-    }
-
-    public function getAdherent(): ?Adherent
-    {
-        return $this->adherent;
-    }
-
-    public function setAdherent(?Adherent $adherent): self
-    {
-        $this->adherent = $adherent;
 
         return $this;
     }
